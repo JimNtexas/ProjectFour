@@ -1,14 +1,18 @@
 package com.udacity.gradle.builditbigger;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.grayraven.jokes.Joker;
+
 
 public class MainActivity extends ActionBarActivity {
+
+    private static Joker joker = new Joker();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +44,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+        String joke = joker.getJoke();
+        Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
     }
 
 
