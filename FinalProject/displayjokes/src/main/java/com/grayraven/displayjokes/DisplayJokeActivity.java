@@ -1,25 +1,21 @@
-package com.udacity.gradle.builditbigger;
+package com.grayraven.displayjokes;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import com.grayraven.displayjokes.*;
-import com.grayraven.jokes.Joker;
+import android.widget.TextView;
 
-
-public class MainActivity extends ActionBarActivity {
-
-    private static Joker joker = new Joker();
+public class DisplayJokeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.displayjokes_main);
+        String joke = getIntent().getStringExtra("joke");
+        TextView view = (TextView)findViewById(R.id.txtJoke);
+        view.setText(joke);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -42,13 +38,4 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void tellJoke(View view){
-        String joke = joker.getJoke();
-        Intent displayIntent = new Intent(this, DisplayJokeActivity.class);
-        displayIntent.putExtra("joke", joke);
-        startActivity(displayIntent);
-    }
-
-
 }
