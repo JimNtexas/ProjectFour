@@ -6,6 +6,11 @@
     <TextView
         android:id="@+id/txtJoke"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Joke here"
+        android:textSize="36sp"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp" />
 
     </FrameLayout>
