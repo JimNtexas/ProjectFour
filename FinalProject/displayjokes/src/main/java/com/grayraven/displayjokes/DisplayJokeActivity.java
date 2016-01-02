@@ -2,17 +2,20 @@ package com.grayraven.displayjokes;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 public class DisplayJokeActivity extends ActionBarActivity {
+    static final String TAG = DisplayJokeActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.displayjokes_main);
         String joke = getIntent().getStringExtra("joke");
+        Log.i(TAG, "Joke: " + joke);
         TextView view = (TextView)findViewById(R.id.txtJoke);
         view.setText(joke);
     }
