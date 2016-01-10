@@ -14,8 +14,11 @@ public class DisplayJokeActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.displayjokes_main);
-        String joke = getIntent().getStringExtra("joke");
+        String joke = getIntent().getStringExtra("jokeText");
         Log.i(TAG, "Joke: " + joke);
+        if(joke == null) {
+            joke = "NULL JOKE!";
+        }
         TextView view = (TextView)findViewById(R.id.txtJoke);
         view.setText(joke);
     }

@@ -1,22 +1,17 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.grayraven.displayjokes.DisplayJokeActivity;
-import com.grayraven.jokes.Joker;
-
 
 public class MainActivity extends ActionBarActivity {
 
-    private static Joker joker = new Joker();
     private static final String TAG = "app.MainActivity";
 
     @Override
@@ -50,11 +45,14 @@ public class MainActivity extends ActionBarActivity {
 
     public void tellJoke(View view){
        Log.i(TAG, "starting DisplayJoke intent");
-        Intent displayIntent = new Intent(this, DisplayJokeActivity.class);
-        displayIntent.putExtra("joke", "joke here");
-        startActivity(displayIntent);
+       new EndpointsAsyncTask(this).execute();
 
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Jim!"));
+    }
+
+    public void displayJoke(String joke) {
+        Intent displayIntent = new Intent(this, DisplayJokeActivity.class);
+        displayIntent.putExtra("jokeText", joke);
+        startActivity(displayIntent);
     }
 
 
