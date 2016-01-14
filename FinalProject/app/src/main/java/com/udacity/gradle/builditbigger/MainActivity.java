@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.grayraven.displayjokes.DisplayJokeActivity;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements JokeTransaction {
 
     private static final String TAG = "app.MainActivity";
 
@@ -49,11 +49,12 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    public void displayJoke(String joke) {
+    @Override
+    public void jokeReady(String joke) {
         Intent displayIntent = new Intent(this, DisplayJokeActivity.class);
+        displayIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         displayIntent.putExtra("jokeText", joke);
         startActivity(displayIntent);
     }
-
 
 }
