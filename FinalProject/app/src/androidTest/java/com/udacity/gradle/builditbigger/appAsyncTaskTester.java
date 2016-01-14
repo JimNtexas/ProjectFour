@@ -23,7 +23,10 @@ public class appAsyncTaskTester extends AndroidTestCase  {
         pause = new ConditionVariable();
         activity = new TestActivity();
         activity.Start();
-        pause.block();
+        long timeout = 30L * 1000;
+        boolean normalExit = pause.block(timeout); //true if the condition was opened, false if the call returns because of the timeout.
+        Log.d(TAG, "setUp timeout: " + normalExit);
+        assertEquals(normalExit,true);
     }
 
     @Override
