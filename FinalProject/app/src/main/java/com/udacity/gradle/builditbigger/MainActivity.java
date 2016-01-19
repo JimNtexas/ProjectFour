@@ -12,7 +12,7 @@ import com.grayraven.displayjokes.DisplayJokeActivity;
 
 public class MainActivity extends ActionBarActivity implements JokeTransaction {
 
-    private static final String TAG = "app.MainActivity";
+    private static final String TAG = "main.MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class MainActivity extends ActionBarActivity implements JokeTransaction {
 
     public void tellJoke(View view){
        Log.i(TAG, "starting DisplayJoke intent");
-       new EndpointsAsyncTask(this).execute();
+       new EndpointsAsyncTasks(this).execute();
 
     }
 

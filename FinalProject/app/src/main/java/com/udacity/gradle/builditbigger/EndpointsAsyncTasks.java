@@ -11,12 +11,12 @@ import com.grayraven.jokes.backend.myApi.MyApi;
 
 import java.io.IOException;
 
-class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
+public class  EndpointsAsyncTasks extends AsyncTask<Void, Void, String> {
     private static MyApi myApiService = null;
     private Context mContext;
     private JokeTransaction jokeTransaction;
-    private static final String TAG = EndpointsAsyncTask.class.getName();
-    public EndpointsAsyncTask(Context context)
+    private static final String TAG = EndpointsAsyncTasks.class.getName();
+    public EndpointsAsyncTasks(Context context)
         {
             mContext = context;
             jokeTransaction = (JokeTransaction)context;

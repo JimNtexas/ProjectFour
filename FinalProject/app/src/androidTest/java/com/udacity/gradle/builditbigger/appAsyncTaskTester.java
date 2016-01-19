@@ -35,10 +35,10 @@ public class appAsyncTaskTester extends AndroidTestCase  {
     }
 
     public class TestActivity extends ActionBarActivity implements JokeTransaction {
-        private EndpointsAsyncTask task;
+        private EndpointsAsyncTasks task;
         private static final String LOG_TAG = "TestActivity";
         public void Start() {
-            task = new EndpointsAsyncTask(this);
+            task = new EndpointsAsyncTasks(this);
             task.execute();
         }
 
