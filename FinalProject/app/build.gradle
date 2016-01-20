@@ -1,6 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
+  /*  signingConfigs {
+        config {
+            keyAlias 'x'
+            keyPassword 'x'
+            storeFile file('x')
+            storePassword 'x'
+        }
+    }*/
+
+    lintOptions {
+        abortOnError false
+    }
+
     compileSdkVersion 23
     buildToolsVersion '23.0.1'
 
@@ -8,7 +21,6 @@ android {
         incremental true
         javaMaxHeapSize "4g"
     }
-
     defaultConfig {
         applicationId "com.udacity.gradle.builditbigger"
         minSdkVersion 10
@@ -17,31 +29,33 @@ android {
         versionName "1.0"
         multiDexEnabled = true
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    productFlavors{
-          free{
-              applicationId "com.udacity.gradle.builditbigger.free"
-          }
-        paid{
+    productFlavors {
+        free {
+            applicationId "com.udacity.gradle.builditbigger.free"
+            //signingConfig signingConfigs.config
+            targetSdkVersion 17
+            buildConfigField "boolean", "FREE_VERSION", "true"
+        }
+        paid {
             applicationId "com.udacity.gradle.builditbigger.paid"
+            buildConfigField "boolean", "FREE_VERSION", "false"
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     // Added for AdMob
     compile project(':javajokes')
     compile project(':displayjokes')
+    compile project(path: ':backend', configuration: 'android-endpoints')
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
-    compile project(path: ':backend', configuration: 'android-endpoints')
 }
