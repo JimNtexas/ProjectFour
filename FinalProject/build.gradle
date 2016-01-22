@@ -17,3 +17,27 @@ allprojects {
         jcenter()
     }
 }
+
+// thanks to Stackoverflow user loosebazooka
+task runTests (type: GradleBuild) {
+    println "starting appEngine"
+    dependsOn 'backend:appengineRun'
+    project(":backend").afterEvaluate { backend ->
+        backend.extensions.appengine.daemon = true
+    }
+    tasks = [':app:connectedAndroidTest']
+}
+
+task appTest(type: GradleBuild) {
+    println "running app:connectedAndriodTest"
+    dependsOn ':app:connectedAndroidTest'
+    tasks = [":backend:appengineStop"]
+}
+
+appTest.mustRunAfter runTests
+
+gradle.taskGraph.beforeTask { Task task ->
+    println "executing $task ..."
+}
+
+

@@ -1,3 +1,8 @@
+#Developer notes:
+
+This app implements the required and optional tasks listed below.  The free version of the app displays an interstitial ad before  
+displaying a joke after the first and every fifth subsequent joke requests.  
+
 # Gradle for Android and Java Final Project
 
 In this project, you will create an app with multiple flavors that uses

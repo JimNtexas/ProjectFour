@@ -18,6 +18,7 @@ public class MainActivity extends ActionBarActivity implements JokeTransaction {
     public static final String  INTERSTITIAL_INTENT =  "Interstitial_intent";
     private ProgressDialog dlg;
     private int interCnt = 0;
+
     private static final int interlimit = 4; //used by free version only
 
     @Override
@@ -50,7 +51,7 @@ public class MainActivity extends ActionBarActivity implements JokeTransaction {
     }
 
     public void tellJoke(View view){
-       Log.i(TAG, "starting DisplayJoke intent");
+       Log.d(TAG, "DisplayJoke Is free version: " + BuildConfig.FREE_VERSION);
        if(BuildConfig.FREE_VERSION && interCnt == 0 ) {
            Log.d(TAG, "Send interstitial broadcast");
            Intent intent = new Intent(INTERSTITIAL_INTENT);
@@ -77,6 +78,7 @@ public class MainActivity extends ActionBarActivity implements JokeTransaction {
         Log.d(TAG, "jokeReady");
         if(dlg != null) {
             dlg.dismiss();
+            dlg = null;
         }
         Intent displayIntent = new Intent(this, DisplayJokeActivity.class);
         displayIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);

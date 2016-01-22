@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class DisplayJokeActivity extends ActionBarActivity {
-    static final String TAG = DisplayJokeActivity.class.getName();
+    private static final String TAG = DisplayJokeActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
